@@ -6,7 +6,7 @@ clientList = []
 
 PORT = 5000
 
-HOST = '192.168.178.66'
+HOST = '192.168.178.94'
 
 SOCKET_LIST = []
 

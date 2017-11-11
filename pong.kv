@@ -1,0 +1,27 @@
+
+<ScatterTextWidget>:
+	orientation: 'vertical'
+
+	
+
+	Label:
+		id:mylabel
+		text: "aaa"
+		font_size:50	
+
+	BoxLayout:
+		TextInput:
+			id:my_textinput
+			font_size: 50
+			size_hint_y: None
+			height: 60
+			text: 'default'
+			
+		
+
+		Button:
+			text: "send"
+			height: 60
+			size_hint_y: None
+			size_hint_x: None
+			on_press:root.sendPress()
