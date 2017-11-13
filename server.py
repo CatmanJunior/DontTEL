@@ -1,18 +1,34 @@
 import socket
 import select
-
+import random
 
 clientList = []
 
 PORT = 5000
 
-HOST = '192.168.178.94'
+HOST = '192.168.178.66'
 
 SOCKET_LIST = []
 
 RECV_BUFFER = 4096 
 
 serversocket = ""
+
+UserList = []
+
+class User():
+
+	def __init__(self, name):
+		self.name = name
+		self.number = UserList.length
+
+class Pattern():
+	def __init__(self):
+		mid = random.randint(4,15)
+		dis = random.randint(1,mid)
+		self.numbers = [mid-dis,mid,mid,mid+dis]
+		
+		
 
 
 def startChatServer():
@@ -54,6 +70,27 @@ def handleChat():
 				continue
 
 
+def broadcast(sock, message):
+	for socket in SOCKET_LIST:
+		if socket != serversocket and socket != sock:
+			try:
+				socket.send(message)
+			except:
+				pass
+
+
+def createPattern():
+	pat = Pattern()
+	random.shuffle(pat.numbers)
+	mes = ""
+	for i in pat.numbers:
+		mes += i
+		mes += "."
+	broadcast(serversocket, mes)
+
+	
+
+
 
 
 
@@ -62,5 +99,6 @@ if __name__ == "__main__":
 
 	while 1:
 		handleChat()
-
+		createPattern()
+		
 	server_socket.close()

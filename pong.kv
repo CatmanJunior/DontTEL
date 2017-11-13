@@ -1,27 +1,169 @@
 
-<ScatterTextWidget>:
-	orientation: 'vertical'
-
-	
-
-	Label:
-		id:mylabel
-		text: "aaa"
-		font_size:50	
-
+<ChatScreen>:
 	BoxLayout:
-		TextInput:
-			id:my_textinput
-			font_size: 50
+		orientation: 'vertical'
+
+		BoxLayout:
 			size_hint_y: None
-			height: 60
-			text: 'default'
+			height:50
+			Button:
+				text: "Back"
+				on_press:root.backPress()
+
+				
+		BoxLayout:
 			
+			Button:
+				background_color:(1,0,0,1)
+				Scatter:
+					pos: 20,0
+					
+					size_hint_y: None
+					height: 500
+					auto_bring_to_front: False
+					do_rotation:False
+					do_scale:False
+					do_translation_x:False
+					Label:
+						id:mylabel
+						text: "Send nudes"
+						font_size:20	
+						
+		BoxLayout:
+			size_hint_y:None
+			TextInput:
+				id:my_textinput
+				font_size: 20
+				size_hint_y: None
+				height: 40
+				text: 'default'
+			Button:
+				text: "send"
+				height: 40
+				size_hint_y: None
+				size_hint_x: None
+				on_press:root.sendPress()
+
+<LoginScreen>:
+	BoxLayout:
+		orientation: 'vertical'
+		Label:
+			text: "Don't TEL"
+			font_size:50
+		Label:
+			text: "Choose a name:"
+			font_size:30
+		TextInput:
+			id: player1name
+			font_size: 20
+			size_hint_y: None
+			height: 40
+			text: 'Naam'
+		TextInput:
+			id: player2name
+			font_size: 20
+			size_hint_y: None
+			height: 40
+			text: 'Naam'
+		TextInput:
+			id: player3name
+			font_size: 20
+			size_hint_y: None
+			height: 40
+			text: 'Naam'
+		TextInput:
+			id: player4name
+			font_size: 20
+			size_hint_y: None
+			height: 40
+			text: 'Naam'
+		Button:
+			text: "start"
+			height: 40
+			size_hint_y: None
+			on_press:root.loginPress()
+
+
+<GameScreen>:
+	
+	BoxLayout:
+		orientation: 'vertical'
+		BoxLayout:
+			Label:
+				id: answer
+				text: "Naam"
+			Label: 
+				id: timeTag
+				text: str(root.nowTime)
+			Label: 
+				id: roundTag
+				text: "Round 1: Whatsapp"
+
+		BoxLayout:
+			Label:
+				id: player1tag
+				text: "Your Number:"
+				font_size:20
+			Label:
+				id: player1number
+				text: ""
+				font_size:20
+		Label:
+			hint_size_y: None
+			id: hint1
+			text: "hint"
+		BoxLayout:
+			Label:
+				id: player2tag
+				text: "Your Number:"
+				font_size:20
+			Label:
+				id: player2number
+				text: ""
+				font_size:20
 		
+		Label:
+			hint_size_y: None
+			id: hint2
+			text: "hint"
+		BoxLayout:
+			Label:
+				id: player3tag
+				text: "Your Number:"
+				font_size:20
+			Label:
+				id: player3number
+				text: ""
+				font_size:20
+		
+		Label:
+			hint_size_y: None
+			id: hint3
+			text: "hint"
+		BoxLayout:
+			Label:
+				id: player4tag
+				text: "Your Number:"
+				font_size:20
+			Label:
+				id: player4number
+				text: ""
+				font_size:20
+			
+		Label:
+			hint_size_y: None
+			id: hint4
+			text: "hint"
+		Button:
+			text: "Next Phase"
+			height: 40
+			size_hint_y: None
+			on_press:root.nextPhase()
 
 		Button:
-			text: "send"
-			height: 60
+			text: "New Round"
+			height: 40
 			size_hint_y: None
-			size_hint_x: None
-			on_press:root.sendPress()
+			on_press:root.newRound()
+
+		
